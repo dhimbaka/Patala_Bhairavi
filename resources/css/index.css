@@ -1,0 +1,77 @@
+body {
+    margin:0px;
+    background-color:rgba(0, 0, 0);
+
+}
+
+.container{
+    background-color:rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    width: min(119.40035vh,100vw);
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@font-face {
+    font-family: logoFont;
+    src: url(/resources/fonts/Chathura\ ExtraBold.ttf);
+    font-weight: bold;
+  }
+
+.logo{
+margin:0;
+padding: 10px;
+height:20vh;
+/* width: min(auto,100vw); */
+position: fixed;
+bottom: 70%;
+right:50%;
+-ms-transform: translate(50%, 50%);
+transform: translate(50%, 50%);
+animation: fadeIn 5s linear;
+
+}
+
+.language{
+    margin:0;
+    padding: 10px;
+    height:20vh;
+    width: min(auto,100vw);
+    color: aliceblue;
+    position: fixed;
+    bottom:0%;
+    right:50%;
+    -ms-transform: translate(50%, 0%);
+    transform: translate(50%, 0%);
+    animation: fadeIn 5s linear;
+    }
+
+    #telugu{
+        color: yellow;
+        }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @-moz-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @-webkit-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @-o-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @-ms-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
