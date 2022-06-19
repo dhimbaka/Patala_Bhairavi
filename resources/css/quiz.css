@@ -45,5 +45,6 @@ body {
     vertical-align: middle;
     font-size:16pt;
     border-radius: 10px;  
+    cursor:pointer;
 }
 

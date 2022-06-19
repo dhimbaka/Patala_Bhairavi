@@ -21,9 +21,34 @@
 <div class = "container">
 <img src="./resources/images/logo.png" alt="Patala Bhairavi" class="logo">
 <div class = "language">
-<p id="telugu">తెలుగు</p>
-<p id="english">English</p>
+<p id="telugu" onclick="tel()">తెలుగు</p>
+<p id="english" onclick="eng()">English</p>
 </div>
 </div>
 </body>
+
+<script>
+    langSelect();
+
+    function langSelect() {
+      if (localStorage.lang==null||localStorage.lang==1) {
+        document.getElementById("telugu").style.color="yellow";
+        document.getElementById("english").style.color="white";
+      } else {
+        document.getElementById("telugu").style.color="white";
+        document.getElementById("english").style.color="yellow";
+      }
+    }
+
+    function eng() {
+        localStorage.lang = 2;
+        langSelect();
+    }
+
+    function tel() {
+        localStorage.lang = 1;
+        langSelect();
+    }
+    </script>
+
 </html>

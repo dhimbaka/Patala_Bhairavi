@@ -48,8 +48,14 @@ animation: fadeIn 5s linear;
     }
 
     #telugu{
-        color: yellow;
+        /* color: yellow; */
+        cursor:pointer;
         }
+
+        #english{
+          /* color: yellow; */
+          cursor:pointer;
+          }
 
     @keyframes fadeIn {
         0% { opacity: 0; }
