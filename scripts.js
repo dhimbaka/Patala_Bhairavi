@@ -140,7 +140,7 @@
             collection[i].removeAttribute('onclick');
             collection[i].style.cursor="default"
             if(localStorage.answer==i+1){
-            collection[i].style.backgroundColor="green";
+            collection[i].style.backgroundColor="#8BC34A";
             }   
         }       
         document.getElementById("next").style.display="block";
