@@ -11,6 +11,8 @@ body {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    animation: fadeIn 5s linear;
+
 }
 
 @font-face {
@@ -29,13 +31,13 @@ bottom: 70%;
 right:50%;
 -ms-transform: translate(50%, 50%);
 transform: translate(50%, 50%);
-animation: fadeIn 5s linear;
+/* animation: fadeIn 5s linear; */
 
 }
 
 .language{
     margin:0;
-    padding: 10px;
+    /* padding: 10px; */
     height:20vh;
     width: min(auto,100vw);
     color: aliceblue;
@@ -44,7 +46,38 @@ animation: fadeIn 5s linear;
     right:50%;
     -ms-transform: translate(50%, 0%);
     transform: translate(50%, 0%);
-    animation: fadeIn 5s linear;
+    /* animation: fadeIn 5s linear; */
+    }
+
+    #startQ{
+      color:black;
+      background-color: aliceblue;
+      /* text-decoration: none; */
+      width: min(250px,100vw);
+      height:35px;
+      line-height: 35px;
+      padding: 10px;
+      text-align:center;
+      vertical-align: middle;
+      font-size:16pt;
+      border-radius: 10px;  
+      cursor:pointer;
+      position: fixed;
+      bottom:40%;
+      right:50%;
+      -ms-transform: translate(50%, 50%);
+      transform: translate(50%, 50%);
+      /* visibility:hidden; */
+      /* animation: fadeIn 5s linear; */
+  }
+
+  a {
+    all: unset;
+    /* color: black; */
+}
+
+  #startQ:hover {
+    background-color: yellow;
     }
 
     #telugu{

@@ -7,6 +7,8 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/index.css">
+    <script type="text/javascript" src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
     <style>
@@ -18,37 +20,32 @@
             background-position-x: center;
         } 
     </style>
+
 <div class = "container">
-<img src="./resources/images/logo.png" alt="Patala Bhairavi" class="logo">
+
+    <img src="./resources/images/logo.png" alt="Patala Bhairavi" class="logo">
+
+<a id="startQ" href="quiz.html">సాహసం చేయరా ఢింబక</a>
+
 <div class = "language">
 <p id="telugu" onclick="tel()">తెలుగు</p>
 <p id="english" onclick="eng()">English</p>
+    <script>
+        langSelect();
+    </script>
+    <script>
+        const SUPABASE_URL = 'https://letehqikkyplgnppugbg.supabase.co'
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxldGVocWlra3lwbGducHB1Z2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTU0MTU1MTMsImV4cCI6MTk3MDk5MTUxM30.uZ2whAkxVRv0Raub5dLLFJO1S-9ude6ljezpzKzkC8w'
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+        async function loadData() {
+    const { data, error } = await _supabase
+            .from('public_quiz')
+            .select('*')
+        }
+        </script>
 </div>
 </div>
 </body>
-
-<script>
-    langSelect();
-
-    function langSelect() {
-      if (localStorage.lang==null||localStorage.lang==1) {
-        document.getElementById("telugu").style.color="yellow";
-        document.getElementById("english").style.color="white";
-      } else {
-        document.getElementById("telugu").style.color="white";
-        document.getElementById("english").style.color="yellow";
-      }
-    }
-
-    function eng() {
-        localStorage.lang = 2;
-        langSelect();
-    }
-
-    function tel() {
-        localStorage.lang = 1;
-        langSelect();
-    }
-    </script>
 
 </html>
