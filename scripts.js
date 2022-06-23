@@ -34,13 +34,13 @@
         document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!";
       } 
       if(localStorage.lang==1) {
-        document.getElementById("telugu").style.color="yellow";
+        document.getElementById("telugu").style.color="#FFC107";
         document.getElementById("english").style.color="white";
         document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!";
       }
       if(localStorage.lang==2) {
         document.getElementById("telugu").style.color="white";
-        document.getElementById("english").style.color="yellow";
+        document.getElementById("english").style.color="#FFC107";
         document.getElementById("startQ").textContent="Go forth!";
       }
       checkQuiz();
