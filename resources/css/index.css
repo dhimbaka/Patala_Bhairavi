@@ -46,6 +46,7 @@ transform: translate(50%, 50%);
     right:50%;
     -ms-transform: translate(50%, 0%);
     transform: translate(50%, 0%);
+    text-align: center;
     /* animation: fadeIn 5s linear; */
     }
 
