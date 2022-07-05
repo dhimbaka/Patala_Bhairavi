@@ -1,3 +1,22 @@
+async function loadData2() {
+    const { data, error } = await _supabase
+        .from('public_quiz')
+        .select('*')
+    
+    if(!error) {
+    // let contents = ''
+    data.forEach(function(item){
+        // contents.q += `<div> ${item.title} - ${item.tag}</div>` 
+        document.getElementById("question").textContent=item.q_eng;
+        document.getElementById("option1").textContent=item.eng1;
+        document.getElementById("option2").textContent=item.eng2;
+        document.getElementById("option3").textContent=item.eng3;
+        document.getElementById("option4").textContent=item.eng4;
+        localStorage.answer=item.ans;
+    })
+    }
+    }
+    
     function checkQuiz() {
         if(localStorage.lastSet == 1||localStorage.lang==null){
             document.getElementById("startQ").style.display="none";
@@ -91,7 +110,8 @@
     if (localStorage.qNo==null||isNaN(localStorage.qNo)){
         localStorage.qNo=1;
     } else {localStorage.qNo++}
-    document.getElementById("qNo").textContent=localStorage.qNo;  
+    document.getElementById("qNo").textContent=localStorage.qNo;      
+    loadData2();
     }
 
     function option1() {
