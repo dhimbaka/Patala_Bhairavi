@@ -5,18 +5,18 @@ async function loadData2() {
     
     if(!error) {
     // let contents = ''
-    data.forEach(function(item){
+       data.forEach(function(item){
         // contents.q += `<div> ${item.title} - ${item.tag}</div>` 
         document.getElementById("question").textContent=item.q_eng;
-        document.getElementById("option1").textContent=item.eng1;
-        document.getElementById("option2").textContent=item.eng2;
-        document.getElementById("option3").textContent=item.eng3;
-        document.getElementById("option4").textContent=item.eng4;
+        document.getElementById("option1").textContent=item.a_eng;
+        document.getElementById("option2").textContent=item.b_eng;
+        document.getElementById("option3").textContent=item.c_eng;
+        document.getElementById("option4").textContent=item.d_eng;
         localStorage.answer=item.ans;
     })
     }
     }
-    
+
     function checkQuiz() {
         if(localStorage.lastSet == 1||localStorage.lang==null){
             document.getElementById("startQ").style.display="none";
@@ -30,7 +30,7 @@ async function loadData2() {
             location.href = 'index.html';
             return;
             }
-        
+        /* 
         if(localStorage.lastSet == 1){
             if(localStorage.qNo>9){
                 localStorage.removeItem("quizScore");  
@@ -44,6 +44,7 @@ async function loadData2() {
             localStorage.removeItem("qNo");
             loadQuiz();
             }
+        */
         }
     
     function langSelect() {
@@ -89,6 +90,18 @@ async function loadData2() {
     }
 
     function loadQuiz() {
+    if (localStorage.qNo>9){
+        localStorage.removeItem("qNo");
+        localStorage.removeItem("quizScore");
+        location.href = 'index.html';
+        return;
+    }
+
+    if (localStorage.qNo==null||isNaN(localStorage.qNo)){
+        localStorage.qNo=1;
+    } else {localStorage.qNo++}
+    document.getElementById("qNo").textContent=localStorage.qNo;
+    
     document.getElementById("timer").innerHTML = "";
     const collection = document.getElementsByClassName("options");
     for (let i = 0; i < collection.length; i++) {
@@ -107,11 +120,9 @@ async function loadData2() {
     clearInterval(timerId);
     resetCountdown();
     scoreDisplay();  
-    if (localStorage.qNo==null||isNaN(localStorage.qNo)){
-        localStorage.qNo=1;
-    } else {localStorage.qNo++}
-    document.getElementById("qNo").textContent=localStorage.qNo;      
-    loadData2();
+      
+    // loadData2(); 
+    //loads question from Supabase
     }
 
     function option1() {

@@ -7,10 +7,7 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/quiz.css">
-    <script type="text/javascript" src="scripts.js"></script>
-</head>
-<body>
-
+    <script src="scripts.js"></script>
     <style>
         body {    
             background-image:url("./resources/images/main1.jpg"); 
@@ -20,11 +17,16 @@
             background-position-x: center;
         } 
     </style>
+</head>
+<body>
+    <script>
+        checkQuiz2();
+    </script>
 <div class = "container">
     <div id="head">
         <span id="timer"></span>
         <span id="score">0</span>
-        <span id="qNo">1</span>
+        <span id="qNo">0</span>
     </div>
     <div class ="qna">
         <div class="question">
@@ -33,7 +35,7 @@
         <div class="options" id="option1" onclick="option1()">
         Option 1
         </div>  
-        <div class="options"id="option2" onclick="option2()">
+        <div class="options" id="option2" onclick="option2()">
         Option 2
         </div>  
         <div class="options" id="option3" onclick="option3()">
@@ -43,11 +45,10 @@
         Option 4
         </div>      
     </div>
-    <p id="next" onclick="checkQuiz2()">Next</p>
-
-    <script>
-        checkQuiz2();
-    </script>
+    <p id="next" onclick="loadQuiz()">Next</p>
 </div>
+<script>
+   loadQuiz(); 
+</script>
 </body>
 </html>

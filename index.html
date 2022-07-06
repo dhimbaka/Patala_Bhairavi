@@ -7,10 +7,8 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/index.css">
-    <script type="text/javascript" src="scripts.js"></script>
+    <script src="scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-</head>
-<body>
     <style>
         body {    
             background-image:url("./resources/images/main1.jpg"); 
@@ -20,7 +18,8 @@
             background-position-x: center;
         } 
     </style>
-
+    </head>
+<body>
 <div class = "container">
 
     <img src="./resources/images/logo.png" alt="Patala Bhairavi" class="logo">
@@ -39,16 +38,16 @@
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
         
         async function loadData() {
-    const { data, error } = await _supabase
+        const { data, error } = await _supabase
             .from('public_quiz')
             .select('*')
 
-    if(!error) {
+        if(!error) {
         data.forEach(function(item){
             localStorage.onlineSet=item.set_no})
     }
 }
-// loadData();
+loadData();
 </script>
 </div>
 </div>
