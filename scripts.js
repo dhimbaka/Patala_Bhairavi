@@ -1,24 +1,14 @@
 async function loadData2() {
-    const { data, error } = await _supabase
-        .from('public_quiz')
-        .select('*')
-    
-    if(!error) {
-    // let contents = ''
-       data.forEach(function(item){
-        // contents.q += `<div> ${item.title} - ${item.tag}</div>` 
-        document.getElementById("question").textContent=item.q_eng;
-        document.getElementById("option1").textContent=item.a_eng;
-        document.getElementById("option2").textContent=item.b_eng;
-        document.getElementById("option3").textContent=item.c_eng;
-        document.getElementById("option4").textContent=item.d_eng;
-        localStorage.answer=item.ans;
-    })
-    }
+        document.getElementById("question").textContent=localStorage.question;
+        document.getElementById("option1").textContent=localStorage.option1;
+        document.getElementById("option2").textContent=localStorage.option2;
+        document.getElementById("option3").textContent=localStorage.option3;
+        document.getElementById("option4").textContent=localStorage.option4;
     }
 
     function checkQuiz() {
-        if(localStorage.lastSet == 1||localStorage.lang==null){
+        if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
+        //checks if latest set has already been attempted
             document.getElementById("startQ").style.display="none";
         } else{
             document.getElementById("startQ").style.display="block";
@@ -30,21 +20,6 @@ async function loadData2() {
             location.href = 'index.html';
             return;
             }
-        /* 
-        if(localStorage.lastSet == 1){
-            if(localStorage.qNo>9){
-                localStorage.removeItem("quizScore");  
-                location.href = 'index.html';
-                return;  
-                } else{
-                loadQuiz();
-                }
-            } else{
-            localStorage.lastSet == 1;
-            localStorage.removeItem("qNo");
-            loadQuiz();
-            }
-        */
         }
     
     function langSelect() {
@@ -76,7 +51,7 @@ async function loadData2() {
         langSelect();
     }
         
-    var timeLeft = 10;
+    var timeLeft = 10; //time per question = 10 seconds
     var timerId = setInterval(countdown, 1000);
     function countdown() {
       if (timeLeft == -1) {
@@ -93,6 +68,7 @@ async function loadData2() {
     if (localStorage.qNo>9){
         localStorage.removeItem("qNo");
         localStorage.removeItem("quizScore");
+        localStorage.lastSet = localStorage.onlineSet;
         location.href = 'index.html';
         return;
     }
@@ -107,10 +83,10 @@ async function loadData2() {
     for (let i = 0; i < collection.length; i++) {
     collection[i].style.backgroundColor = "aliceblue"
     collection[i].setAttribute("style","cursor: pointer")
-    collection[i].textContent="option"
+    // collection[i].textContent="option"
     }
 
-    localStorage.answer=2;
+    // localStorage.answer=2;
 
     document.getElementById("option1").setAttribute("onclick","option1()")
     document.getElementById("option2").setAttribute("onclick","option2()")
@@ -121,7 +97,7 @@ async function loadData2() {
     resetCountdown();
     scoreDisplay();  
       
-    // loadData2(); 
+    loadData2(); 
     //loads question from Supabase
     }
 

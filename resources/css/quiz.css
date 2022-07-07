@@ -71,24 +71,25 @@ border-radius: 25px;
     margin-left: auto;
     margin-right: auto;}
 
-.question{
+#question{
     color:white;
     width: min(350px,100vw);
+    height: 150px;
     text-align: center;
+    vertical-align: middle;
     font-size:18pt;
     padding: 10px;
     padding-top: 50px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    position: ;
 }
 
 .options{
     color:black;
     background-color: aliceblue;
     width: min(350px,100vw);
-    height:35px;
+    height:max(auto,35px);
     line-height: 35px;
     margin:20px;
     padding: 10px;
