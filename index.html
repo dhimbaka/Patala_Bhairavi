@@ -7,8 +7,6 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/index.css">
-    <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <style>
         body {    
             background-image:url("./resources/images/main1.jpg"); 
@@ -27,32 +25,49 @@
 <a id="startQ" href="quiz.html">సాహసం చేయరా ఢింబక</a>
 
 <div class = "language">
-<p id="telugu" onclick="tel()">తెలుగు</p>
-<p id="english" onclick="eng()">English</p>
+<p id="tel">తెలుగు</p>
+<p id="eng">English</p>
 
-<script>
-langSelect();
+</div>
+</div>
 
-const SUPABASE_URL = 'https://letehqikkyplgnppugbg.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxldGVocWlra3lwbGducHB1Z2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTU0MTU1MTMsImV4cCI6MTk3MDk5MTUxM30.uZ2whAkxVRv0Raub5dLLFJO1S-9ude6ljezpzKzkC8w'
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-       
-async function loadData() {
-const { data, error } = await _supabase
-.from('public_quiz')
-.select('*')
-.limit(1)
+<script type="module">
+import {setNo} from './services.js'
+setNo();
 
-if(!error) {
-data.forEach(function(item){
-localStorage.onlineSet=item.set_no})
+document.getElementById('tel').addEventListener('click',tel);
+document.getElementById('eng').addEventListener('click',eng);
+
+if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
+    document.getElementById("startQ").style.display="none";         
+    //checks if latest set has already been attempted
+}         
+
+if(localStorage.lang=='tel'){
+   tel();
 }
+
+if(localStorage.lang=='eng'){
+ eng();
 }
 
-loadData();
+function tel() {
+        localStorage.lang = 'tel';
+        document.getElementById('tel').style.color="#FFC107";
+        document.getElementById('eng').style.color="white";
+        document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!"
+        document.getElementById("startQ").style.display="block";
+    }
+
+    function eng() {
+        localStorage.lang = 'eng';
+        document.getElementById('tel').style.color="white";
+        document.getElementById('eng').style.color="#FFC107";
+        document.getElementById("startQ").textContent="Go forth!"
+        document.getElementById("startQ").style.display="block";
+    }
 </script>
-</div>
-</div>
+
 </body>
 
 </html>

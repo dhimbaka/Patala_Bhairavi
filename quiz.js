@@ -1,71 +1,5 @@
-async function loadData2() {
-        document.getElementById("question").textContent=localStorage.question;
-        document.getElementById("option1").textContent=localStorage.option1;
-        document.getElementById("option2").textContent=localStorage.option2;
-        document.getElementById("option3").textContent=localStorage.option3;
-        document.getElementById("option4").textContent=localStorage.option4;
-    }
-
-    function checkQuiz() {
-        if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
-        //checks if latest set has already been attempted
-            document.getElementById("startQ").style.display="none";
-        } else{
-            document.getElementById("startQ").style.display="block";
-        }
-    }
-
-    function checkQuiz2() {
-        if(localStorage.lang==null){
-            location.href = 'index.html';
-            return;
-            }
-        }
-    
-    function langSelect() {
-      if (localStorage.lang==null) {
-        document.getElementById("telugu").style.color="white";
-        document.getElementById("english").style.color="white";
-        document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!";
-      } 
-      if(localStorage.lang==1) {
-        document.getElementById("telugu").style.color="#FFC107";
-        document.getElementById("english").style.color="white";
-        document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!";
-      }
-      if(localStorage.lang==2) {
-        document.getElementById("telugu").style.color="white";
-        document.getElementById("english").style.color="#FFC107";
-        document.getElementById("startQ").textContent="Go forth!";
-      }
-      checkQuiz();
-    }
-
-    function tel() {
-        localStorage.lang = 1;
-        langSelect();
-    }
-
-    function eng() {
-        localStorage.lang = 2;
-        langSelect();
-    }
-        
-    var timeLeft = 10; //time per question = 10 seconds
-    var timerId = setInterval(countdown, 1000);
-    function countdown() {
-      if (timeLeft == -1) {
-        clearInterval(timerId);
-        // document.getElementById("timer").style.backgroundColor = "red";
-        chooseAnswer();
-      } else {
-        document.getElementById("timer").innerHTML = timeLeft;
-        timeLeft--;
-      }
-    }
-
-    function loadQuiz() {
-    if (localStorage.qNo>9){
+    function resetQuiz() {
+    if (localStorage.qNo>9){ //at the end of the set
         localStorage.removeItem("qNo");
         localStorage.removeItem("quizScore");
         localStorage.lastSet = localStorage.onlineSet;
@@ -83,22 +17,30 @@ async function loadData2() {
     for (let i = 0; i < collection.length; i++) {
     collection[i].style.backgroundColor = "aliceblue"
     collection[i].setAttribute("style","cursor: pointer")
-    // collection[i].textContent="option"
     }
-
-    // localStorage.answer=2;
 
     document.getElementById("option1").setAttribute("onclick","option1()")
     document.getElementById("option2").setAttribute("onclick","option2()")
     document.getElementById("option3").setAttribute("onclick","option3()")
     document.getElementById("option4").setAttribute("onclick","option4()")
     document.getElementById("next").style.display="none";
+
     clearInterval(timerId);
     resetCountdown();
     scoreDisplay();  
-      
-    loadData2(); 
-    //loads question from Supabase
+    }
+
+    console.log("fix timer");
+    var timeLeft = 10; //time per question = 10 seconds
+    var timerId = setInterval(countdown, 1000);
+    function countdown() {
+      if (timeLeft == -1) {
+        clearInterval(timerId);
+        chooseAnswer();
+      } else {
+        document.getElementById("timer").innerHTML = timeLeft;
+        timeLeft--;
+      }
     }
 
     function option1() {
@@ -144,7 +86,7 @@ async function loadData2() {
     function chooseAnswer() {
         const collection = document.getElementsByClassName("options");
         for (let i = 0; i < collection.length; i++) {
-            collection[i].removeAttribute('onclick');
+            collection[i].removeAttribute('onclick')
             collection[i].style.cursor="default"
             if(localStorage.answer==i+1){
             collection[i].style.backgroundColor="#8BC34A";

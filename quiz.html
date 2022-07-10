@@ -7,8 +7,14 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/quiz.css">
-    <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    
+    <script>
+if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
+location.href = 'index.html';
+// return;
+}
+
+</script><script src="quiz.js"></script>
     <style>
         body {    
             background-image:url("./resources/images/main1.jpg"); 
@@ -20,9 +26,7 @@
     </style>
 </head>
 <body>
-    <script>
-        checkQuiz2();
-    </script>
+
 <div class = "container">
     <div id="head">
         <span id="timer"></span>
@@ -30,69 +34,46 @@
         <span id="qNo">0</span>
     </div>
     <div class ="qna">
-        <div id="question">
-        This is a sample question. How much text can fit in this one box? This is a sample question. How much text?
-        </div>  
-        <div class="options" id="option1" onclick="option1()">
-        Option 1
-        </div>  
-        <div class="options" id="option2" onclick="option2()">
-        Option 2
-        </div>  
-        <div class="options" id="option3" onclick="option3()">
-        Option 3
-        </div>  
-        <div class="options" id="option4" onclick="option4()">
-        Option 4
-        </div>      
+        <div id="question"></div>  
+        <div class="options" id="option1" onclick="option1()"></div>  
+        <div class="options" id="option2" onclick="option2()"></div>  
+        <div class="options" id="option3" onclick="option3()"></div>  
+        <div class="options" id="option4" onclick="option4()"></div>      
     </div>
-    <p id="next" onclick=" loadQuiz();loadData();">Next</p>
+    <p id="next">Next</p>
 </div>
+
 <script>
-
-const SUPABASE_URL = 'https://letehqikkyplgnppugbg.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxldGVocWlra3lwbGducHB1Z2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTU0MTU1MTMsImV4cCI6MTk3MDk5MTUxM30.uZ2whAkxVRv0Raub5dLLFJO1S-9ude6ljezpzKzkC8w'
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-       
-async function loadData() {
-
-if (localStorage.qNo==null||isNaN(localStorage.qNo)){
-localStorage.qNo=1;
-} 
-
-const { data, error } = await _supabase
-.from('public_quiz')
-.select('*')
-// .limit(1)
-.eq('q_no', localStorage.qNo)
-
-if(!error) {
-data.forEach(function(item){
-
-localStorage.answer=item.ans;
-
-if(localStorage.lang==1){
-localStorage.question=item.q_tel
-localStorage.option1=item.a_tel
-localStorage.option2=item.b_tel
-localStorage.option3=item.c_tel
-localStorage.option4=item.d_tel
-} 
-
-if(localStorage.lang==2){
-localStorage.question=item.q_eng
-localStorage.option1=item.a_eng
-localStorage.option2=item.b_eng
-localStorage.option3=item.c_eng
-localStorage.option4=item.d_eng   
-}
-})
-}
-
-}
-
-loadQuiz(); 
-loadData();
+resetQuiz();
 </script>
+
+<script type="module">
+import {quiz} from './services.js'
+    
+    // using local storage for question number instead of var since we want user to pick up from next question if they close the browser and return to the set later
+
+   async function next(){
+        resetQuiz();
+        const quizData = await quiz();
+        bindAnswers(quizData);
+    }
+
+    function bindAnswers(quizData){
+        localStorage.answer = quizData['ans'];
+        document.getElementById('question').innerHTML = quizData['q_' + localStorage.lang];
+        document.getElementById('option1').innerHTML = quizData['a_' + localStorage.lang];
+        document.getElementById('option2').innerHTML = quizData['b_' + localStorage.lang];
+        document.getElementById('option3').innerHTML = quizData['c_' + localStorage.lang];
+        document.getElementById('option4').innerHTML = quizData['d_' + localStorage.lang];
+    }
+
+    document.getElementById('next').addEventListener('click',next);
+    
+    // Init this Page
+    const quizData = await quiz();
+    bindAnswers(quizData);
+    console.log(quizData);
+</script>
+
 </body>
 </html>

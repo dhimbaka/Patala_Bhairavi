@@ -72,13 +72,13 @@ transform: translate(50%, 50%);
     background-color: #FFC107;
     }
 
-    #telugu{
+    #tel{
         cursor:pointer;
         }
 
-        #english{
-          cursor:pointer;
-          }
+    #eng{
+      cursor:pointer;
+    }
 
     @keyframes fadeIn {
         0% { opacity: 0; }
