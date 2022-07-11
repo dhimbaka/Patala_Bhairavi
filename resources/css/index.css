@@ -64,6 +64,23 @@ transform: translate(50%, 50%);
       transform: translate(50%, 50%);
   }
 
+  #message{
+    color:#FFC107;
+    width: min(250px,100vw);
+    height:auto;
+    line-height: 35px;
+    padding: 10px;
+    text-align:center;
+    vertical-align: middle;
+    font-size:16pt;
+    border-radius: 10px;  
+    position: fixed;
+    bottom:40%;
+    right:50%;
+    -ms-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+}
+
   a {
     all: unset;
 }

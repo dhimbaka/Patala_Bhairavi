@@ -1,5 +1,5 @@
     function resetQuiz() {
-    if (localStorage.qNo>9){ //at the end of the set
+    if (localStorage.qNo>9){ //reset all stats at the end of each set
         localStorage.removeItem("qNo");
         localStorage.removeItem("quizScore");
         localStorage.lastSet = localStorage.onlineSet;
@@ -7,6 +7,7 @@
         return;
     }
 
+    //reset all stats at the end of each set
     if (localStorage.qNo==null||isNaN(localStorage.qNo)){
         localStorage.qNo=1;
     } else {localStorage.qNo++}
@@ -30,7 +31,6 @@
     scoreDisplay();  
     }
 
-    console.log("fix timer");
     var timeLeft = 10; //time per question = 10 seconds
     var timerId = setInterval(countdown, 1000);
     function countdown() {
