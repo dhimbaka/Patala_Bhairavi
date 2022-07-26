@@ -55,14 +55,14 @@ border-radius: 25px;
     width: 25px;
     }
 
-    #score{
-        position: fixed;
-        top:5px;
-        right:50%;
-        height: 25px;
-        line-height: 25px;
-        width: 25px;
-        }
+#score{
+    position: fixed;
+    top:5px;
+    right:50%;
+    height: 25px;
+    line-height: 25px;
+    width: 25px;
+    }
 
 .qna{
     height: 100%;
@@ -118,6 +118,6 @@ border-radius: 25px;
     right:50%;
     -ms-transform: translate(50%, 0%);
     transform: translate(50%, 0%);
-    /* visibility:hidden; */
+    display: none;
 }
 

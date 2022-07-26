@@ -6,7 +6,6 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
     const _supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
     async function setNo(){
-
             const { data, error } = await _supabase
             .from('public_quiz')
             .select('*')
@@ -16,27 +15,90 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
             data.forEach(function(item){
             localStorage.onlineSet=item.set_no})
             } 
-
             console.log("running function 1");
+
+            function startButton(){
+
+                if(localStorage.lang==null){
+                    document.getElementById("startQ").style.display="none";
+                    document.getElementById("message").style.display="none";  
+                    return    
+                }   
+            
+                if(localStorage.lastSet == localStorage.onlineSet) {
+                    document.getElementById("startQ").style.display="none";
+                    document.getElementById("message").style.display="block";  
+                    return    
+                    } 
+                
+                document.getElementById("startQ").style.display="block";
+                document.getElementById("message").style.display="none";    
+            }      
+            
+            function tel() {
+                localStorage.lang = 'tel';
+                document.getElementById("logo").src="./resources/images/tel_logo1.png";
+                document.getElementById('tel').style.color="#FFC107";
+                document.getElementById('eng').style.color="white";
+                document.getElementById("message").textContent="రేపు రా ఢింబక";
+                document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!"
+                startButton();
+                }
+            
+            function eng() {
+                localStorage.lang = 'eng';
+                document.getElementById("logo").src="./resources/images/eng_logo1.png";
+                // $("#logo").attr("src","eng_logo1.png");
+                document.getElementById('tel').style.color="white";
+                document.getElementById('eng').style.color="#FFC107";
+                document.getElementById("message").textContent="No more quizzes today"
+                document.getElementById("startQ").textContent="Go forth!";
+                startButton();    
+                }
+                
+            startButton();
+            if(localStorage.lang=='tel'){tel()};
+            if(localStorage.lang=='eng'){eng()};
+            
+            document.getElementById('tel').addEventListener('click',tel);
+            document.getElementById('eng').addEventListener('click',eng);
 
             }
 
+    async function currentquiz(){
 
-    async function quiz(){
+        if (localStorage.qNo>9){ //reset all stats at the end of each set
+            if (localStorage.totalScore==null||isNaN(localStorage.totalScore)){
+                localStorage.totalScore=0;
+                localStorage.percent=0;
+            } 
+            localStorage.totalScore = localStorage.totalScore + localStorage.quizScore;
+            localStorage.lastSet = localStorage.onlineSet;
+            localStorage.percent = (localStorage.totalScore*100)/(localStorage.lastSet*10);
+            localStorage.removeItem("qNo");
+            localStorage.removeItem("quizScore");
+            location.href = 'scores.html';
+            return;
+        }
+    
+    if (localStorage.qNo==null||isNaN(localStorage.qNo)){
+    //to add: resetting question number if person hasn't finished previous set
+    localStorage.qNo=1;
+    } else {localStorage.qNo++}
+
         const {data, error} = await _supabase
         .from('public_quiz')
         .select('*')
         .eq('q_no', localStorage.qNo);
         
         if (error){
-            // TODO: handle it
-            location.href = 'index.html';
-            localStorage.qNo--; 
-            console.log('error',error);
+        // TODO: handle it
+        location.href = 'index.html';
+        localStorage.qNo--; 
+        console.log('error',error);
         }
         console.log("running function 2");
-
         return data[0];
     }
 
-export {setNo,quiz}
+export {setNo,currentquiz}

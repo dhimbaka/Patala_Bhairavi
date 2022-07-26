@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="./resources/css/quiz.css">
     
     <script>
-if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
-location.href = 'index.html';
-// return;
-}
+    if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
+    location.href = 'index.html';
+    // return;
+    }
+    </script>
+    <script src="quiz.js"></script>
 
-</script><script src="quiz.js"></script>
     <style>
         body {    
             background-image:url("./resources/images/main1.jpg"); 
@@ -25,9 +26,9 @@ location.href = 'index.html';
         } 
     </style>
 </head>
-<body>
 
-<div class = "container">
+<body>
+    <div class = "container">
     <div id="head">
         <span id="timer"></span>
         <span id="score">0</span>
@@ -35,27 +36,22 @@ location.href = 'index.html';
     </div>
     <div class ="qna">
         <div id="question"></div>  
-        <div class="options" id="option1" onclick="option1()"></div>  
-        <div class="options" id="option2" onclick="option2()"></div>  
-        <div class="options" id="option3" onclick="option3()"></div>  
-        <div class="options" id="option4" onclick="option4()"></div>      
+        <div class="options" id="option1"></div>  
+        <div class="options" id="option2"></div>  
+        <div class="options" id="option3"></div>  
+        <div class="options" id="option4"></div>      
     </div>
     <p id="next">Next</p>
-</div>
-
-<script>
-resetQuiz();
-</script>
+    </div>
 
 <script type="module">
-import {quiz} from './services.js'
-    
-    // using local storage for question number instead of var since we want user to pick up from next question if they close the browser and return to the set later
+import {currentquiz} from './services.js'    
+document.getElementById('next').addEventListener('click',next);
 
-   async function next(){
-        resetQuiz();
-        const quizData = await quiz();
+async function next(){
+        const quizData = await currentquiz();
         bindAnswers(quizData);
+        resetQuiz();
     }
 
     function bindAnswers(quizData){
@@ -67,13 +63,9 @@ import {quiz} from './services.js'
         document.getElementById('option4').innerHTML = quizData['d_' + localStorage.lang];
     }
 
-    document.getElementById('next').addEventListener('click',next);
-    
     // Init this Page
-    const quizData = await quiz();
-    bindAnswers(quizData);
-    console.log(quizData);
-</script>
+    next();
 
+    </script>
 </body>
 </html>

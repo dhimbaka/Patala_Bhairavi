@@ -20,7 +20,7 @@
 <body>
 <div class = "container">
 
-    <img src="./resources/images/logo.png" alt="Patala Bhairavi" class="logo">
+    <img src="./resources/images/tel_logo1.png" alt="Patala Bhairavi" id="logo">
 
 <a id="startQ" href="quiz.html"></a>
 <p id="message"></p>
@@ -34,49 +34,6 @@
 <script type="module">
 import {setNo} from './services.js'
 setNo();
-
-function startButton(){
-
-    if(localStorage.lang==null){
-        document.getElementById("startQ").style.display="none";
-        document.getElementById("message").style.display="none";  
-        return    
-    }   
-
-    if(localStorage.lastSet == localStorage.onlineSet) {
-        document.getElementById("startQ").style.display="none";
-        document.getElementById("message").style.display="block";  
-        return    
-        } 
-    
-    document.getElementById("startQ").style.display="block";
-    document.getElementById("message").style.display="none";    
-}      
-
-startButton();
-if(localStorage.lang=='tel'){tel()};
-if(localStorage.lang=='eng'){eng()};
-
-document.getElementById('tel').addEventListener('click',tel);
-document.getElementById('eng').addEventListener('click',eng);
-
-function tel() {
-    localStorage.lang = 'tel';
-    document.getElementById('tel').style.color="#FFC107";
-    document.getElementById('eng').style.color="white";
-    document.getElementById("message").textContent="No more quizzes today (Telugu)";
-    document.getElementById("startQ").textContent="సాహసం చేయరా ఢింబక!"
-    startButton();
-    }
-
-function eng() {
-    localStorage.lang = 'eng';
-    document.getElementById('tel').style.color="white";
-    document.getElementById('eng').style.color="#FFC107";
-    document.getElementById("message").textContent="No more quizzes today"
-    document.getElementById("startQ").textContent="Go forth!";
-    startButton();    
-    }
 </script>
 
 </body>

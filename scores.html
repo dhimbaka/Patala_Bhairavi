@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patala Bhairavi</title>
+    <link rel="icon" href="Favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./resources/css/scores.css">
+    <style>
+        body {    
+            background-image:url("./resources/images/main1.jpg"); 
+            background-repeat: no-repeat;
+            background-size: auto 100vh;
+            background-position-y: top;
+            background-position-x: center;
+        } 
+    </style>
+    </head>
+<body>
+    <div class = "container">
+        <div class = "container2">
+        <div class="stats" id = "level_cont">
+            <img src="./resources/images/level.png" alt="Level" class="icons" id="level_pic">
+            <span id="level" class="numbs">Level</span>
+        </div>
+        <div class="stats" id = "score_cont">
+            <img src="./resources/images/diamond.png" alt="Score" class="icons" id="diamond">
+            <span id="score" class="numbs">Score</span>
+        </div>
+        <div class="stats" id = "percent_cont">
+            <img src="./resources/images/tick.png" alt="Percentage Correct" class="icons" id="tick">
+            <span id="percent" class="numbs">Percent</span>
+        </div>
+    </div>
+    <a id="home" href="quiz.html">Home</a>
+    </div>
+
+    <script>
+        document.getElementById('level').innerHTML = localStorage.lastSet;
+        document.getElementById('score').innerHTML = localStorage.totalScore;
+        document.getElementById('percent').innerHTML = localStorage.percent+'%';
+        </script>
+
+</body>
+</html>

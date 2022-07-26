@@ -1,19 +1,7 @@
     function resetQuiz() {
-    if (localStorage.qNo>9){ //reset all stats at the end of each set
-        localStorage.removeItem("qNo");
-        localStorage.removeItem("quizScore");
-        localStorage.lastSet = localStorage.onlineSet;
-        location.href = 'index.html';
-        return;
-    }
-
-    //reset all stats at the end of each set
-    if (localStorage.qNo==null||isNaN(localStorage.qNo)){
-        localStorage.qNo=1;
-    } else {localStorage.qNo++}
+    document.getElementById("timer").innerHTML = "";    
     document.getElementById("qNo").textContent=localStorage.qNo;
-    
-    document.getElementById("timer").innerHTML = "";
+
     const collection = document.getElementsByClassName("options");
     for (let i = 0; i < collection.length; i++) {
     collection[i].style.backgroundColor = "aliceblue"
@@ -28,17 +16,19 @@
 
     clearInterval(timerId);
     resetCountdown();
-    scoreDisplay();  
-    }
+    scoreDisplay();     
+    } 
 
-    var timeLeft = 10; //time per question = 10 seconds
     var timerId = setInterval(countdown, 1000);
+    var timeLeft = 10; //time per question = 10 seconds
+
     function countdown() {
       if (timeLeft == -1) {
         clearInterval(timerId);
         chooseAnswer();
       } else {
         document.getElementById("timer").innerHTML = timeLeft;
+        console.log("time left = "+timeLeft);
         timeLeft--;
       }
     }

@@ -19,16 +19,16 @@ body {
     font-weight: bold;
   }
 
-.logo{
+#logo{
 margin:0;
 padding: 10px;
 height:20vh;
+width: min(auto,100vw);
 position: fixed;
 bottom: 70%;
 right:50%;
 -ms-transform: translate(50%, 50%);
 transform: translate(50%, 50%);
-
 }
 
 .language{
@@ -62,6 +62,7 @@ transform: translate(50%, 50%);
       right:50%;
       -ms-transform: translate(50%, 50%);
       transform: translate(50%, 50%);
+      display: none;
   }
 
   #message{
