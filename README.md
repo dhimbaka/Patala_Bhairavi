@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Patala Bhairavi is a quiz website that will let users attempt 10 questions every day in English or Telugu.
+Patala Bhairavi is a quiz website that will let users attempt trivia questions in English or Telugu.
 
 ## Features
 

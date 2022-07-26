@@ -1,8 +1,10 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
 var SUPABASE_URL = 'https://letehqikkyplgnppugbg.supabase.co'
 var SUPABASE_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxldGVocWlra3lwbGducHB1Z2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTU0MTU1MTMsImV4cCI6MTk3MDk5MTUxM30.uZ2whAkxVRv0Raub5dLLFJO1S-9ude6ljezpzKzkC8w'
 
-var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+var supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 window.userToken = null
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -12,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var logInForm = document.querySelector('#log-in')
   logInForm.onsubmit = logInSubmitted.bind(logInForm)
 
-  var userDetailsButton = document.querySelector('#user-button')
-  userDetailsButton.onclick = fetchUserDetails.bind(userDetailsButton)
+  // var userDetailsButton = document.querySelector('#user-button')
+  // userDetailsButton.onclick = fetchUserDetails.bind(userDetailsButton)
 
   var logoutButton = document.querySelector('#logout-button')
   logoutButton.onclick = logoutSubmitted.bind(logoutButton)
