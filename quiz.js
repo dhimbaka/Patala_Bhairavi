@@ -1,6 +1,6 @@
     function resetQuiz() {
     document.getElementById("timer").innerHTML = "";    
-    document.getElementById("qNo").textContent=localStorage.qNo;
+    document.getElementById("qNo").textContent=parseInt(localStorage.qNo);
 
     const collection = document.getElementsByClassName("options");
     for (let i = 0; i < collection.length; i++) {
@@ -84,13 +84,14 @@
         }       
         document.getElementById("next").style.display="block";
         clearInterval(timerId);
+        console.log("answer = "+localStorage.answer);
     }
 
     function scoreDisplay(){
         if (localStorage.quizScore==null||isNaN(localStorage.quizScore)){
             localStorage.quizScore=0;
         }
-        document.getElementById("score").textContent=localStorage.quizScore;
+        document.getElementById("score").textContent=parseInt(localStorage.quizScore);
     }
 
     function resetCountdown() {

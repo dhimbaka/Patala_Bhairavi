@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./resources/css/quiz.css">
     
     <script>
-    if(localStorage.lastSet == localStorage.onlineSet||localStorage.lang==null){
+    if(parseInt(localStorage.lastSet) == parseInt(localStorage.onlineSet)||localStorage.lang==null){
     location.href = 'index.html';
     // return;
     }

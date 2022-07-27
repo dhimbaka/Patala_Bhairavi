@@ -37,10 +37,12 @@
     </div>
 
     <script>
-        document.getElementById('level').innerHTML = localStorage.lastSet;
-        document.getElementById('score').innerHTML = localStorage.totalScore;
-        document.getElementById('percent').innerHTML = localStorage.percent+'%';
+        if (localStorage.lastSet==null){
+        } else {
+        document.getElementById('level').innerHTML = parseInt(localStorage.lastSet);
+        document.getElementById('score').innerHTML = parseInt(localStorage.totalScore);
+        document.getElementById('percent').innerHTML = parseInt(localStorage.percent)+'%';
+        }
         </script>
-
 </body>
 </html>

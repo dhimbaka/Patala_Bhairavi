@@ -16,7 +16,8 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
             data.forEach(function(item){
             localStorage.onlineSet=item.set_no})
             } 
-            console.log("set no = "+localStorage.onlineSet);
+            console.log("online set no = "+localStorage.onlineSet);
+            console.log("last set no = "+localStorage.lastSet);
 
             function startButton(){
 
@@ -26,7 +27,8 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
                     return    
                 }   
             
-                if(localStorage.lastSet == localStorage.onlineSet) {
+                //typecast into int since localstorage.lastset is not an integer
+                if(parseInt(localStorage.lastSet) == parseInt(localStorage.onlineSet)) {
                     document.getElementById("startQ").style.display="none";
                     document.getElementById("message").style.display="block";  
                     return    
@@ -72,9 +74,9 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
                 localStorage.totalScore=0;
                 localStorage.percent=0;
             } 
-            localStorage.totalScore = localStorage.totalScore + localStorage.quizScore;
-            localStorage.lastSet = localStorage.lastSet+1;
-            localStorage.percent = (localStorage.totalScore*100)/(localStorage.lastSet*10);
+            localStorage.totalScore = parseInt(localStorage.totalScore) + parseInt(localStorage.quizScore);
+            localStorage.lastSet = parseInt(localStorage.lastSet)+1;
+            localStorage.percent = (parseInt(localStorage.totalScore)*100)/(parseInt(localStorage.lastSet)*10);
             localStorage.removeItem("qNo");
             localStorage.removeItem("quizScore");
             localStorage.removeItem("localStorage.answer");
@@ -93,8 +95,8 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
         const {data, error} = await _supabase
         .from('public_quiz')
         .select('*')
-        .eq('set_no', localStorage.lastSet+1)
-        .eq('q_no', localStorage.qNo);
+        .eq('set_no', parseInt(localStorage.lastSet)+1)
+        .eq('q_no', parseInt(localStorage.qNo));
         
         if (error){
         // TODO: handle it
@@ -102,7 +104,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
         localStorage.qNo--; 
         console.log('error',error);
         }
-        console.log("running set #"+(localStorage.lastSet));
+        console.log("running set #"+(parseInt(localStorage.lastSet)+1));
         return data[0];
     }
 

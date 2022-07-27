@@ -18,14 +18,15 @@ body {
     width: auto;
     position: fixed;
     top:10%;
-    left:45%;
+    left:47%;
 }
 
   .stats{
     height: 30px;
     margin-top: 30px;
     width: min(119.40035vh,100vw);
-    align-items:center;
+    display: flex;
+    align-items: center; 
 }
 
 .icons{
@@ -39,7 +40,7 @@ body {
     width: auto;
     color:white;
     font-size:18pt;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 #home{
@@ -48,6 +49,7 @@ body {
     width: min(250px,100vw);
     height:35px;
     line-height: 35px;
+    text-decoration: none;
     padding: 10px;
     text-align:center;
     vertical-align: middle;
@@ -60,3 +62,7 @@ body {
     -ms-transform: translate(50%, 50%);
     transform: translate(50%, 50%);
 }
+
+#home:hover {
+    background-color: #FFC107;
+    }

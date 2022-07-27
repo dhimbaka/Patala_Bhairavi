@@ -2,24 +2,25 @@
 
 ## What is it?
 
-Patala Bhairavi is a quiz website that will let users attempt trivia questions in English or Telugu.
+Patala Bhairavi is a quiz website that will let users attempt trivia questions in English or Telugu, in sets of 10
 
 ## Features
 
 - Local storage is used for:
   - Remembering language preferance
-  - Checking whether the user has attempted that day's questions
-  - Storing cumulative scores
+  - Keeping track of user's progress (# of question sets attempted, # of questions attempted in an ongoing set)
+  - Storing cumulative scores & statistics
 
 ## Tools/Platforms I've Used
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-  - Prettier Extension: to format code in a more readable fashion
+  - Prettier Extension
+  - Live Server extension
 - HTML / CSS / Javascript
 - Git/GitHub
   - To manage version control and track updates
   - GitHub Pages currently hosts the site
-- Supabase *(to be set up)*
+- Supabase
   - Database for storing questions
 
 ### Tutorials & Guides
