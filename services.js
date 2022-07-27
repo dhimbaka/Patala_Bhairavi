@@ -8,14 +8,15 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
     async function setNo(){
             const { data, error } = await _supabase
             .from('public_quiz')
-            .select('*')
+            .select('set_no')
             .limit(1)
+            .order('set_no', { ascending: false })
            
             if(!error) {
             data.forEach(function(item){
             localStorage.onlineSet=item.set_no})
             } 
-            console.log("running function 1");
+            console.log("set no = "+localStorage.onlineSet);
 
             function startButton(){
 
@@ -48,7 +49,6 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
             function eng() {
                 localStorage.lang = 'eng';
                 document.getElementById("logo").src="./resources/images/eng_logo1.png";
-                // $("#logo").attr("src","eng_logo1.png");
                 document.getElementById('tel').style.color="white";
                 document.getElementById('eng').style.color="#FFC107";
                 document.getElementById("message").textContent="No more quizzes today"
@@ -73,22 +73,27 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
                 localStorage.percent=0;
             } 
             localStorage.totalScore = localStorage.totalScore + localStorage.quizScore;
-            localStorage.lastSet = localStorage.onlineSet;
+            localStorage.lastSet = localStorage.lastSet+1;
             localStorage.percent = (localStorage.totalScore*100)/(localStorage.lastSet*10);
             localStorage.removeItem("qNo");
             localStorage.removeItem("quizScore");
+            localStorage.removeItem("localStorage.answer");
             location.href = 'scores.html';
             return;
         }
     
+        if (localStorage.lastSet==null||isNaN(localStorage.lastSet)){
+            localStorage.lastSet=0;
+            }
+
     if (localStorage.qNo==null||isNaN(localStorage.qNo)){
-    //to add: resetting question number if person hasn't finished previous set
     localStorage.qNo=1;
     } else {localStorage.qNo++}
 
         const {data, error} = await _supabase
         .from('public_quiz')
         .select('*')
+        .eq('set_no', localStorage.lastSet+1)
         .eq('q_no', localStorage.qNo);
         
         if (error){
@@ -97,7 +102,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
         localStorage.qNo--; 
         console.log('error',error);
         }
-        console.log("running function 2");
+        console.log("running set #"+(localStorage.lastSet));
         return data[0];
     }
 
