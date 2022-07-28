@@ -10,8 +10,7 @@
     
     <script>
     if(parseInt(localStorage.lastSet) == parseInt(localStorage.onlineSet)||localStorage.lang==null){
-    location.href = 'index.html';
-    // return;
+        location.href = 'index.html';
     }
     </script>
     <script src="quiz.js"></script>
@@ -45,12 +44,13 @@
     </div>
 
 <script type="module">
-import {currentquiz} from './services.js'    
-document.getElementById('next').addEventListener('click',next);
+    import {loadNextQuiz} from './services.js'
 
-async function next(){
-        const quizData = await currentquiz();
-        bindAnswers(quizData);
+    async function next(){
+        const quizData = await loadNextQuiz();
+        if (quizData){        
+            bindAnswers(quizData);
+        }
         resetQuiz();
     }
 
@@ -64,6 +64,7 @@ async function next(){
     }
 
     // Init this Page
+    document.getElementById('next').addEventListener('click',next);
     next();
 
     </script>
