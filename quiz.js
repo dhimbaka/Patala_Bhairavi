@@ -21,6 +21,7 @@ function resetQuiz() {
     
     clearInterval(timerId);
     resetCountdown();
+    document.getElementById("timer").style.display = "block";
     scoreDisplay();
 }
 
