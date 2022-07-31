@@ -47,6 +47,7 @@
     import {loadNextQuiz} from './services.js'
 
     async function next(){
+        document.getElementById("next").style.display = "none";
         const quizData = await loadNextQuiz();
         if (quizData){        
             bindAnswers(quizData);

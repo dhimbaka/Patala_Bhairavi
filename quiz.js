@@ -4,6 +4,7 @@ var timerId = setInterval(countdown, 1000);
 var timeLeft = 10; //time per question = 10 seconds
 
 function resetQuiz() {
+    // document.getElementById("next").style.display = "none";
     document.getElementById("timer").innerHTML = "";
     document.getElementById("qNo").textContent = parseInt(localStorage.qNo);
 
@@ -17,8 +18,7 @@ function resetQuiz() {
     document.getElementById("option2").setAttribute("onclick", "option2()")
     document.getElementById("option3").setAttribute("onclick", "option3()")
     document.getElementById("option4").setAttribute("onclick", "option4()")
-    document.getElementById("next").style.display = "none";
-
+    
     clearInterval(timerId);
     resetCountdown();
     scoreDisplay();
@@ -26,8 +26,8 @@ function resetQuiz() {
 
 function countdown() {
     if (timeLeft == -1) {
-        clearInterval(timerId);
         chooseAnswer();
+        clearInterval(timerId);
     } else {
         document.getElementById("timer").innerHTML = timeLeft;
         console.log("time left = " + timeLeft);
