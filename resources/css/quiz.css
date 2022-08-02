@@ -20,8 +20,8 @@ body {
     color:black;
     background-color: yellowgreen;
     width: min(410px,100vw);
-    height:35px;
-    line-height: 35px;
+    height:40px;
+    line-height: 40px;
     /* padding: 10px; */
     text-align:center;
     font-size:14pt;
