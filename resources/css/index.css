@@ -94,8 +94,8 @@ body {
   cursor: pointer;
   top: 0%;
   left: min(119.40035vh, 100vw);
-  -ms-transform: translate(50%, 0%);
-  transform: translate(50%, 0%);
+  /* -ms-transform: translate(50%, 0%);
+  transform: translate(50%, 0%); */
 }
 
 a {
