@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,68 +8,69 @@
     <title>Patala Bhairavi</title>
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./resources/css/quiz.css">
-    
+
     <script>
-    if(parseInt(localStorage.lastSet) == parseInt(localStorage.onlineSet)||localStorage.lang==null){
-        location.href = 'index.html';
-    }
+        if (parseInt(localStorage.lastSet) == parseInt(localStorage.onlineSet) || localStorage.lang == null) {
+            location.href = 'index.html';
+        }
     </script>
     <script src="quiz.js"></script>
 
     <style>
-        body {    
-            background-image:url("./resources/images/main1.jpg"); 
+        body {
+            background-image: url("./resources/images/main1.jpg");
             background-repeat: no-repeat;
             background-size: auto 100vh;
             background-position-y: top;
             background-position-x: center;
-        } 
+        }
     </style>
 </head>
 
 <body>
-    <div class = "container">
-    <div id="head">
-        <span id="timer"></span>
-        <span id="score">0</span>
-        <span id="qNo">0</span>
-    </div>
-    <div class ="qna">
-        <div id="question"></div>  
-        <div class="options" id="option1"></div>  
-        <div class="options" id="option2"></div>  
-        <div class="options" id="option3"></div>  
-        <div class="options" id="option4"></div>      
-    </div>
-    <p id="next">Next</p>
+    <div class="container">
+        <div id="head">
+            <span id="timer"></span>
+            <span id="score">0</span>
+            <span id="qNo">0</span>
+        </div>
+        <div class="qna">
+            <div id="question"></div>
+            <div class="options" id="option1"></div>
+            <div class="options" id="option2"></div>
+            <div class="options" id="option3"></div>
+            <div class="options" id="option4"></div>
+        </div>
+        <p id="next">Next</p>
     </div>
 
-<script type="module">
-    import {loadNextQuiz} from './services.js'
+    <script type="module">
+        import { loadNextQuiz } from './services.js'
 
-    async function next(){
-        document.getElementById("next").style.display = "none";
-        const quizData = await loadNextQuiz();
-        if (quizData){        
-            bindAnswers(quizData);
+        async function next() {
+            document.getElementById("next").style.display = "none";
+            const quizData = await loadNextQuiz();
+            if (quizData) {
+                bindAnswers(quizData);
+            }
+            resetQuiz();
         }
-        resetQuiz();
-    }
 
-    function bindAnswers(quizData){
-        localStorage.answer = quizData['ans'];
-        document.getElementById('question').innerHTML = quizData['q_' + localStorage.lang];
-        document.getElementById('option1').innerHTML = quizData['a_' + localStorage.lang];
-        document.getElementById('option2').innerHTML = quizData['b_' + localStorage.lang];
-        document.getElementById('option3').innerHTML = quizData['c_' + localStorage.lang];
-        document.getElementById('option4').innerHTML = quizData['d_' + localStorage.lang];
-    }
+        function bindAnswers(quizData) {
+            localStorage.answer = quizData['ans'];
+            document.getElementById('question').innerHTML = quizData['q_' + localStorage.lang];
+            document.getElementById('option1').innerHTML = quizData['a_' + localStorage.lang];
+            document.getElementById('option2').innerHTML = quizData['b_' + localStorage.lang];
+            document.getElementById('option3').innerHTML = quizData['c_' + localStorage.lang];
+            document.getElementById('option4').innerHTML = quizData['d_' + localStorage.lang];
+        }
 
-    // Init this Page
-    document.getElementById("timer").style.display = "none";
-    document.getElementById('next').addEventListener('click',next);
-    next();
+        // Init this Page
+        document.getElementById("timer").style.display = "none";
+        document.getElementById('next').addEventListener('click', next);
+        next();
 
     </script>
 </body>
+
 </html>

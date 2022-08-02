@@ -1,68 +1,92 @@
 body {
-    background-color:rgba(0, 0, 0);
-    margin:0px;   
-  }
-  
-  .container{
-    background-color:rgba(0, 0, 0, 0.7);
-    height: 100vh;
-    width: min(119.40035vh,100vw);
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .container2{
-    margin: 10 px;
-    height: auto;
-    width: auto;
-    position: fixed;
-    top:10%;
-    left:47%;
+  background-color: rgba(0, 0, 0);
+  margin: 0px;
 }
 
-  .stats{
-    height: 30px;
-    margin-top: 30px;
-    width: min(119.40035vh,100vw);
-    display: flex;
-    align-items: center; 
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: min(119.40035vh, 100vw);
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.icons{
-        height: 40px;
-        width: auto;
+.container2 {
+  margin: 10 px;
+  height: auto;
+  width: auto;
+  position: fixed;
+  top: 10%;
+  left: 47%;
 }
 
-.numbs{
-    height: 40px;
-    line-height: 40px;
-    width: auto;
-    color:white;
-    font-size:18pt;
-    margin-left: 10px;
+.stats {
+  height: 30px;
+  margin-top: 30px;
+  width: min(119.40035vh, 100vw);
+  display: flex;
+  align-items: center;
 }
 
-#home{
-    color:black;
-    background-color: aliceblue;
-    width: min(250px,100vw);
-    height:35px;
-    line-height: 35px;
-    text-decoration: none;
-    padding: 10px;
-    text-align:center;
-    vertical-align: middle;
-    font-size:16pt;
-    border-radius: 10px;  
-    cursor:pointer;
-    position: fixed;
-    bottom:10%;
-    right:50%;
-    -ms-transform: translate(50%, 50%);
-    transform: translate(50%, 50%);
+.icons {
+  height: 40px;
+  width: auto;
+}
+
+.numbs {
+  height: 40px;
+  line-height: 40px;
+  width: auto;
+  color: white;
+  font-size: 18pt;
+  margin-left: 10px;
+}
+
+#home {
+  color: black;
+  background-color: aliceblue;
+  width: min(250px, 100vw);
+  height: 35px;
+  line-height: 35px;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16pt;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 10%;
+  right: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+}
+
+#reset {
+  color: black;
+  background-color: aliceblue;
+  width: min(250px, 100vw);
+  height: 35px;
+  line-height: 35px;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16pt;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30%;
+  right: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
 }
 
 #home:hover {
-    background-color: #FFC107;
-    }
+  background-color: #FFC107;
+}
+
+#reset:hover {
+  background-color: #FFC107;
+}

@@ -18,7 +18,7 @@ function resetQuiz() {
     document.getElementById("option2").setAttribute("onclick", "option2()")
     document.getElementById("option3").setAttribute("onclick", "option3()")
     document.getElementById("option4").setAttribute("onclick", "option4()")
-    
+
     clearInterval(timerId);
     resetCountdown();
     document.getElementById("timer").style.display = "block";
