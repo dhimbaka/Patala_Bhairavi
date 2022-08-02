@@ -121,3 +121,6 @@ border-radius: 25px;
     display: none;
 }
 
+.options:hover {
+    background-color: #FFC107;
+    }

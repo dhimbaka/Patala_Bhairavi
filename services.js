@@ -59,6 +59,10 @@ async function pageController() {
         startButton();
     }
 
+    function scorePage() {
+        location.href = 'scores.html';
+    }
+
     // Init Process
     startButton();
     if (localStorage.lang == 'tel') { tel() };
@@ -66,6 +70,7 @@ async function pageController() {
 
     document.getElementById('tel').addEventListener('click', tel);
     document.getElementById('eng').addEventListener('click', eng);
+    document.getElementById('setting_logo').addEventListener('click', scorePage);
 }
 
 // Pre Condition: Pointing to the current quiz on the screen

@@ -1,124 +1,160 @@
 body {
-  background-color:rgba(0, 0, 0);
-  margin:0px;   
+  background-color: rgba(0, 0, 0);
+  margin: 0px;
 }
 
-.container{
-    background-color:rgba(0, 0, 0, 0.7);
-    height: 100vh;
-    width: min(119.40035vh,100vw);
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 5s linear;
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: min(119.40035vh, 100vw);
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 5s linear;
 }
 
 @font-face {
-    font-family: logoFont;
-    src: url(/resources/fonts/Chathura\ ExtraBold.ttf);
-    font-weight: bold;
+  font-family: logoFont;
+  src: url(/resources/fonts/Chathura/ExtraBold.ttf);
+  font-weight: bold;
+}
+
+#logo {
+  margin: 0;
+  padding: 10px;
+  height: 20vh;
+  width: min(auto, 100vw);
+  position: fixed;
+  bottom: 70%;
+  right: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+}
+
+.language {
+  margin: 0;
+  height: 20vh;
+  width: min(auto, 100vw);
+  color: aliceblue;
+  position: fixed;
+  bottom: 0%;
+  right: 50%;
+  -ms-transform: translate(50%, 0%);
+  transform: translate(50%, 0%);
+  text-align: center;
+  align-items: center;
+}
+
+#startQ {
+  color: black;
+  background-color: aliceblue;
+  width: min(250px, 100vw);
+  height: 35px;
+  line-height: 35px;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16pt;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 40%;
+  right: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+  display: none;
+  background-color: #ffc107;
+}
+
+#message {
+  color: #ffc107;
+  width: min(250px, 100vw);
+  height: auto;
+  line-height: 35px;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16pt;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 40%;
+  right: 50%;
+  -ms-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+}
+
+#setting_logo {
+  width: 60px;
+  height: auto;
+  vertical-align: middle;
+  font-size: 16pt;
+  border-radius: 10px;
+  position: fixed;
+  cursor: pointer;
+  top: 0%;
+  left: min(119.40035vh, 100vw);
+  -ms-transform: translate(50%, 0%);
+  transform: translate(50%, 0%);
+}
+
+a {
+  all: unset;
+}
+
+#tel {
+  cursor: pointer;
+}
+
+#eng {
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
 
-#logo{
-margin:0;
-padding: 10px;
-height:20vh;
-width: min(auto,100vw);
-position: fixed;
-bottom: 70%;
-right:50%;
--ms-transform: translate(50%, 50%);
-transform: translate(50%, 50%);
+  100% {
+    opacity: 1;
+  }
 }
 
-.language{
-    margin:0;
-    height:20vh;
-    width: min(auto,100vw);
-    color: aliceblue;
-    position: fixed;
-    bottom:0%;
-    right:50%;
-    -ms-transform: translate(50%, 0%);
-    transform: translate(50%, 0%);
-    text-align: center;
-    align-items: center;
-    }
-
-    #startQ{
-      color:black;
-      background-color: aliceblue;
-      width: min(250px,100vw);
-      height:35px;
-      line-height: 35px;
-      padding: 10px;
-      text-align:center;
-      vertical-align: middle;
-      font-size:16pt;
-      border-radius: 10px;  
-      cursor:pointer;
-      position: fixed;
-      bottom:40%;
-      right:50%;
-      -ms-transform: translate(50%, 50%);
-      transform: translate(50%, 50%);
-      display: none;
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
 
-  #message{
-    color:#FFC107;
-    width: min(250px,100vw);
-    height:auto;
-    line-height: 35px;
-    padding: 10px;
-    text-align:center;
-    vertical-align: middle;
-    font-size:16pt;
-    border-radius: 10px;  
-    position: fixed;
-    bottom:40%;
-    right:50%;
-    -ms-transform: translate(50%, 50%);
-    transform: translate(50%, 50%);
+  100% {
+    opacity: 1;
+  }
 }
 
-  a {
-    all: unset;
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
-  #startQ:hover {
-    background-color: #FFC107;
-    }
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
 
-    #tel{
-        cursor:pointer;
-        }
+  100% {
+    opacity: 1;
+  }
+}
 
-    #eng{
-      cursor:pointer;
-    }
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
 
-    @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
-      
-      @-moz-keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
-      
-      @-webkit-keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
-      
-      @-o-keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
-      
-      @-ms-keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-      }
+  100% {
+    opacity: 1;
+  }
+}
